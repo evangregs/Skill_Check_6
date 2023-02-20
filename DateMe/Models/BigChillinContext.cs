@@ -15,15 +15,35 @@ namespace DateMe.Models
         }
 
         public DbSet<MovieSubmission> Submissions { get; set; }
+        public DbSet<Category> Categories { get; set; }
 
+        // seed data
         protected override void OnModelCreating(ModelBuilder mb)
         {
+            mb.Entity<Category>().HasData(
+                    new Category { CategoryID=1, CategoryName="Action"},
+                    new Category { CategoryID=2, CategoryName="Adventure"},
+                    new Category { CategoryID=3, CategoryName="Animation"},
+                    new Category { CategoryID=4, CategoryName="Chick-flick"},
+                    new Category { CategoryID=5, CategoryName="Comedy"},
+                    new Category { CategoryID=6, CategoryName="Coming-of-Age"},
+                    new Category { CategoryID=7, CategoryName="Documentary"},
+                    new Category { CategoryID=8, CategoryName="Drama"},
+                    new Category { CategoryID=9, CategoryName="Horror"},
+                    new Category { CategoryID=10, CategoryName="Noir"},
+                    new Category { CategoryID=11, CategoryName="Romance"},
+                    new Category { CategoryID=12, CategoryName="Sci-fi"},
+                    new Category { CategoryID=13, CategoryName="Silent"},
+                    new Category { CategoryID=14, CategoryName="Thriller"},
+                    new Category { CategoryID=15, CategoryName="Western"}
+                );
+
             mb.Entity<MovieSubmission>().HasData(
 
                     new MovieSubmission
                     {
                         MovieID = 1,
-                        Category = "Sci-Fi",
+                        CategoryID = 12,
                         Title = "Interstellar",
                         Year = 2014,
                         Director = "Christopher Nolan",
@@ -35,7 +55,7 @@ namespace DateMe.Models
                     new MovieSubmission
                     {
                         MovieID = 2,
-                        Category = "Romance/Satire",
+                        CategoryID = 6,
                         Title = "The Graduate",
                         Year = 1967,
                         Director = "Mike Nichols",
@@ -47,7 +67,7 @@ namespace DateMe.Models
                     new MovieSubmission
                     {
                         MovieID = 3,
-                        Category = "Adventure",
+                        CategoryID = 3,
                         Title = "Puss in Boots: The Last Wish",
                         Year = 2022,
                         Director = "Joel Crawford",
