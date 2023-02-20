@@ -33,7 +33,7 @@ namespace DateMe.Controllers
         public IActionResult Moves()
         {
             ViewBag.categories = _privateChillinContext.Categories.ToList();
-            return View("movieForm");
+            return View("movieForm", new MovieSubmission());
         }
 
         [HttpPost]
